@@ -74,6 +74,20 @@ li {
 
  .inner-content {
   position: absolute;
-  top: 15px;
+  top: 25px;
   left: 39px;
+ }
+ .counter {
+  background-color: rgba(1,1,1, 0.7);
+  color: red;
+  width: 37px;
+  height: 1.8em;
+  display: inline-block;
+  border-radius: 25%;
+  text-align: center;
+  padding: 3px;
+  font-size: 22px;
+  margin-left: -25px;
+  margin-right: 10px;
+
  }
