@@ -19,6 +19,10 @@ body {
   width:220px;
   margin: 127px auto;
   z-index:50;
+  position: absolute;
+    right: 130px;
+    bottom: 0px;
+}
  }
 }
  h1 {
