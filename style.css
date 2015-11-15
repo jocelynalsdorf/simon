@@ -1,5 +1,5 @@
 body {
-  background-color: #add8e6;
+  background-color: black;
 }
 
 .circle {
@@ -8,7 +8,7 @@ body {
   border-radius: 50%;
   height:500px;
   width:500px;
-  margin: 25px auto;
+  margin: 45px auto;
   position:relative;
  }
 .inner-circle {
@@ -65,4 +65,15 @@ li {
  .green {
   background-color: green;
   border-radius: 110% 0 0 0;
+ }
+
+ .circle-title {
+  font-size:50px;
+  font-family: 'Righteous', cursive; 
+ }
+
+ .inner-content {
+  position: absolute;
+  top: 15px;
+  left: 39px;
  }
