@@ -9,6 +9,7 @@ body {
   height:500px;
   width:500px;
   margin: 25px auto;
+  position:relative;
  }
 .inner-circle {
   background-color: #fff;
@@ -17,8 +18,47 @@ body {
   height:220px;
   width:220px;
   margin: 127px auto;
+  z-index:50;
  }
 }
  h1 {
   font-size:55px;
+ }
+
+ .colors {
+  height:238px;
+  width:238px;
+  /*border-radius: 150px 150px 150px 150px;*/
+ }
+
+
+ ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+ }
+li {
+  display:inline-block;
+  padding:0;
+  margin:0;
+}
+ .red {
+  background-color: red;
+  border-radius: 0 110% 0 0;
+ }
+
+
+ .blue{
+  background-color: blue;
+    border-radius:  0 0 110% 0;
+ }
+
+ .yellow {
+  background-color: yellow;
+    border-radius: 0 0 0 110%;
+ }
+
+ .green {
+  background-color: green;
+  border-radius: 110% 0 0 0;
  }
