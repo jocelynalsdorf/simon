@@ -133,7 +133,33 @@ li {
   font-size:18px;
   font-weight: bold;
 }
+  .on {
+  position: absolute;
+  top: 143px;
+  left: 12px;
+  font-size:16px;
+  font-weight: bold;
+  background-color: lightgrey;
+  border: none;
+  }
+  
+  
+  .off {
+  position: absolute;
+  top: 143px;
+  left: 88px;
+  font-size:16px;
+  font-weight: bold;
+  background-color: lightgrey;
+  border: none;
+  }
 
+  .btn-primary.active {
+    background-color:#696969;
+  }
+  .btn-success.active {
+    background-color:#696969;
+  }
  .btn-wrapper {
   position: relative;
  }
