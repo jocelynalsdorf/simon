@@ -15,13 +15,13 @@ body {
   background-color: #fff;
   border: 10px solid grey;
   border-radius: 50%;
-  height:220px;
-  width:220px;
+  height:255px;
+  width:255px;
   margin: 127px auto;
   z-index:50;
   position: absolute;
-    right: 130px;
-    bottom: 0px;
+    right: 112px;
+    bottom: -15px;
 }
  }
 }
