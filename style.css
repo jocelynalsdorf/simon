@@ -91,3 +91,49 @@ li {
   margin-right: 10px;
 
  }
+  .start {
+  font-size:18px;
+  font-weight: bold;
+  position: absolute;
+  top: 99px;
+  left: 26px;
+  }
+
+ .start-btn {
+  background-color: purple;
+  border:3px solid black;
+  border-radius:50%;
+  height: 18px;
+  width: 18px;
+  display: inline-block;
+  margin-left:3px;
+  margin-right: 3px;
+  position: absolute;
+  top: 80px;
+  left: 44px;
+ }
+
+ .strict-btn {
+  background-color: orange;
+  border:3px solid black;
+  border-radius:50%;
+  height: 18px;
+  width: 18px;
+  display: inline-block;
+  margin-left:3px;
+  margin-right: 3px;
+  position: absolute;
+  top: 80px;
+  left: 120px;
+ }
+.strict {
+  position: absolute;
+  top: 99px;
+  left: 100px;
+  font-size:18px;
+  font-weight: bold;
+}
+
+ .btn-wrapper {
+  position: relative;
+ }
