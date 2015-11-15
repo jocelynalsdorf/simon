@@ -3,7 +3,7 @@ body {
 }
 
 .circle {
-  background-color: black;
+  background-color: grey;
   border: 10px solid grey;
   border-radius: 50%;
   height:500px;
@@ -28,7 +28,7 @@ body {
  .colors {
   height:238px;
   width:238px;
-  /*border-radius: 150px 150px 150px 150px;*/
+  border: 5px solid grey;
  }
 
 
