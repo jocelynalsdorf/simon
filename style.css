@@ -47,23 +47,23 @@ li {
   margin:0;
 }
  .red {
-  background-color: red;
+  background-color: rgba(249, 14, 45, 1);
   border-radius: 0 110% 0 0;
  }
 
 
  .blue{
-  background-color: blue;
+  background-color: rgba(14, 22, 249, 1);
     border-radius:  0 0 110% 0;
  }
 
  .yellow {
-  background-color: yellow;
+  background-color: rgba(241, 249, 14, 1);
     border-radius: 0 0 0 110%;
  }
 
  .green {
-  background-color: green;
+  background-color: rgba(16, 223,78, 1);
   border-radius: 110% 0 0 0;
  }
 
@@ -156,7 +156,7 @@ li {
   .btn-primary.active {
     background-color:#696969;
   }
-  
+
   .btn-success.active {
     background-color:#696969;
   }
