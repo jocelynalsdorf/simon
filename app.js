@@ -3,11 +3,13 @@
 function Game() {
 //start array with the first random tile
   var sequence = [2, Math.floor(Math.random() * 4 + 1), 4 ,1,3];
-  var seqCopy = [];
+  var seqCopy = sequence.slice();
   var level = 0;
   var mode = "normal";
-  var gameOver = "false";
+  this.gameOver = false;
   this.sequence = sequence;
+  this.seqCopy = seqCopy
+  this.active = true;
 };
 
 Game.prototype.initBoard = function(){
@@ -52,6 +54,7 @@ Game.prototype.getRandomNum = function(){
 
 Game.prototype.startGame = function(){
 var currentSeq = this.sequence;
+console.log(this.seqCopy);
 var animateTile = function(item) {
   $('#' + item).animate({
       opacity: 0.2
@@ -60,23 +63,29 @@ var animateTile = function(item) {
     }, 500);
     //animation takes 300 ms
   };
-//light up tile based on the current array content
+//light up tile based on the current array content; pause between animations
 var i = 0;
   var interval = setInterval(function() {
     setInterval(animateTile(currentSeq[i]), 400);
- 
         i++;
         if (i >= currentSeq.length) {
       clearInterval(interval);
         }
    }, 600);
 
+}
 
+Game.prototype.nextRound = function (arr) {
+  arr.push(this.getRandomNum());
+  //console.log(this.sequence);
+}
 
-
-
-  //this.sequence.push(this.getRandomNum());
-  console.log(this.sequence);
+Game.prototype.getClicks = function(e) {
+  var correctClicks = this.seqCopy.shift();
+  var actualClicks = $(e.target).data('tile');
+  //set this to true or false if they are hitting correct tiles
+  this.active = (correctClicks === actualClicks);
+  //this.checkLose();
 }
 
 $(document).ready(function(){
@@ -88,6 +97,13 @@ $(document).ready(function(){
     $(".on").addClass("active");
     var game = new Game();
     game.initBoard();
+    console.log(game);
+
+    $('.tile-list').on('click', '[data-tile]', function(e){
+      game.getClicks(e);
+      console.log(game.active)
+    });
+
 
   });
 });//end of document ready
