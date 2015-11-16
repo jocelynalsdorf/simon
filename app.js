@@ -2,7 +2,7 @@
 //make game object
 function Game() {
 //start array with the first random tile
-  var sequence = [Math.floor(Math.random() * 4 + 1)];
+  var sequence = [2, Math.floor(Math.random() * 4 + 1), 4 ,1,3];
   var seqCopy = [];
   var level = 0;
   var mode = "normal";
@@ -51,18 +51,30 @@ Game.prototype.getRandomNum = function(){
 }
 
 Game.prototype.startGame = function(){
-
- //do light up method here based on the current array content
-for (var i = 0; i < this.sequence.length; i++) {
-    //var item = this.sequence.pop();
-// pops and removes first item of array 
-    $('#' + this.sequence[i]).animate({
+var currentSeq = this.sequence;
+var animateTile = function(item) {
+  $('#' + item).animate({
       opacity: 0.2
     }, 200).animate({
       opacity: 1
-    }, 100);
+    }, 500);
     //animation takes 300 ms
-  }
+  };
+//light up tile based on the current array content
+var i = 0;
+  var interval = setInterval(function() {
+    setInterval(animateTile(currentSeq[i]), 400);
+ 
+        i++;
+        if (i >= currentSeq.length) {
+      clearInterval(interval);
+        }
+   }, 600);
+
+
+
+
+
   //this.sequence.push(this.getRandomNum());
   console.log(this.sequence);
 }
