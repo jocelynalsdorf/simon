@@ -36,7 +36,8 @@ Game.prototype.initBoard = function(){
     clearBtns();
     that.mode = "normal";
     that.sequence = [];
-    console.log(that.sequence);
+    that.seqCopy = [];
+    $(".tile-list").off();
   });
 
 };
@@ -102,6 +103,9 @@ $(document).ready(function(){
     $('.tile-list').on('click', '[data-tile]', function(e){
       game.getClicks(e);
       console.log(game.active)
+      if(game.active === false) {
+        alert("you lose");
+      }
     });
 
 
