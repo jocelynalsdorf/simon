@@ -2,7 +2,7 @@
 //make game object
 function Game() {
 //start array with the first random tile
-  var sequence = [2, Math.floor(Math.random() * 4 + 1), 4 ,1,3];
+  var sequence = [2, Math.floor(Math.random() * 4 + 1), 4];
   var seqCopy = sequence.slice();
   var level = 0;
   var mode = "normal";
@@ -10,6 +10,7 @@ function Game() {
   this.sequence = sequence;
   this.seqCopy = seqCopy
   this.active = true;
+  this.level = level;
 };
 
 Game.prototype.initBoard = function(){
@@ -34,9 +35,13 @@ Game.prototype.initBoard = function(){
 //turn off game and clear lit up btns
   $(".off").on('click', function(){
     clearBtns();
+    $(".on").removeClass("active");
+    $(".off").addClass("active");
     that.mode = "normal";
     that.sequence = [];
     that.seqCopy = [];
+    that.level = 0;
+    $(".loser").hide();
     $(".tile-list").off();
   });
 
@@ -54,6 +59,7 @@ Game.prototype.getRandomNum = function(){
 }
 
 Game.prototype.startGame = function(){
+
 var currentSeq = this.sequence;
 console.log(this.seqCopy);
 var animateTile = function(item) {
@@ -78,7 +84,9 @@ var i = 0;
 
 Game.prototype.nextRound = function (arr) {
   arr.push(this.getRandomNum());
-  //console.log(this.sequence);
+  this.seqCopy = arr.slice();
+  console.log(this.arr);
+  console.log(this.seqCopy);
 }
 
 Game.prototype.getClicks = function(e) {
@@ -89,23 +97,35 @@ Game.prototype.getClicks = function(e) {
   //this.checkLose();
 }
 
-$(document).ready(function(){
+Game.prototype.checkLose = function(){
   
+
+}
+
+$(document).ready(function(){
+  $(".loser").hide();
 //init the game 
   $(".on").on('click', function(e){
     e.preventDefault();
+    
     $(".off").removeClass("active");
     $(".on").addClass("active");
     var game = new Game();
     game.initBoard();
-    console.log(game);
+    $(".counter").text(game.level);
+   
 
     $('.tile-list').on('click', '[data-tile]', function(e){
-      game.getClicks(e);
-      console.log(game.active)
-      if(game.active === false) {
-        alert("you lose");
-      }
+      game.getClicks(e);   
+      if (game.active === false) {
+        $('.loser').show();
+      } 
+    }).on('mousedown','[data-tile]', function(){
+      $(this).animate({
+      opacity: 0.2
+    }, 200).animate({
+      opacity: 1
+    }, 500);  
     });
 
 
