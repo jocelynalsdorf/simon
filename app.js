@@ -6,11 +6,13 @@ function Game() {
   var seqCopy = sequence.slice();
   var level = 0;
   var mode = "normal";
+  var tempCounter = 1;
   this.gameOver = false;
   this.sequence = sequence;
   this.seqCopy = seqCopy
   this.active = true;
   this.level = level;
+  this.tempCounter = tempCounter;
 };
 
 Game.prototype.initBoard = function(){
@@ -52,7 +54,6 @@ Game.prototype.changeMode = function(){
 }
 
 
-
 Game.prototype.getRandomNum = function(){
   var randomNum = Math.floor(Math.random() * 4 + 1);
   return randomNum;
@@ -72,20 +73,20 @@ var animateTile = function(item) {
   };
 //light up tile based on the current array content; pause between animations
 var i = 0;
-  var interval = setInterval(function() {
-    setInterval(animateTile(currentSeq[i]), 400);
-        i++;
-        if (i >= currentSeq.length) {
-      clearInterval(interval);
-        }
-   }, 600);
+var interval = setInterval(function() {
+  setInterval(animateTile(currentSeq[i]), 400);
+      i++;
+      if (i >= currentSeq.length) {
+    clearInterval(interval);
+      }
+ }, 600);
 
 }
 
-Game.prototype.nextRound = function (arr) {
-  arr.push(this.getRandomNum());
-  this.seqCopy = arr.slice();
-  console.log(this.arr);
+Game.prototype.nextRound = function () {
+  this.sequence.push(this.getRandomNum());
+  this.seqCopy = this.sequence.slice();
+  console.log(this.sequence);
   console.log(this.seqCopy);
 }
 
@@ -94,15 +95,23 @@ Game.prototype.getClicks = function(e) {
   var actualClicks = $(e.target).data('tile');
   //set this to true or false if they are hitting correct tiles
   this.active = (correctClicks === actualClicks);
-  //this.checkLose();
+  this.checkLose();
 }
 
 Game.prototype.checkLose = function(){
-  
+
+
+  if (this.active === true && this.tempCounter === this.sequence.length) {
+    this.nextRound(this.sequence);
+   // console.log('test');
+  } else {
+    console.log(this.tempCounter);
+  }
 
 }
 
 $(document).ready(function(){
+  
   $(".loser").hide();
 //init the game 
   $(".on").on('click', function(e){
@@ -119,7 +128,11 @@ $(document).ready(function(){
       game.getClicks(e);   
       if (game.active === false) {
         $('.loser').show();
-      } 
+      } else {
+        game.tempCounter += 1;
+      }
+      console.log(game.sequence.length);
+      
     }).on('mousedown','[data-tile]', function(){
       $(this).animate({
       opacity: 0.2
